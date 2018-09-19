@@ -1,5 +1,7 @@
 # angularjs - $http methods
 
+This application utilizes AngularJS $http get, post methods to fetch data from the server and posting data to Server. 
+
 ## [$http.get()](https://docs.angularjs.org/api/ng/service/$http#overview)
 Syntax: 
 ```
