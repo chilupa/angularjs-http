@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <title>AngularJS - $http</title>
+</head>
+
+<body ng-controller="myCtrl as vm">
+
+    <h2>$http methods - get, post</h2>
+    <p>Name: <span><input ng-model="vm.userNameInput" type="text"></span></p>
+    <p>Job: <span><input ng-model="vm.userJobInput" type="text"></span></p>
+    <p>Location: <span><input ng-model="vm.userLocationInput" type="text"></span></p>
+    <button ng-disabled="!(vm.userNameInput && vm.userJobInput && vm.userLocationInput)" type="submit" ng-click="vm.submitDetails()">Submit</button>
+    <p style="color:green;">{{vm.postMessage}}</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Location</th>
+        </tr>
+        <tr ng-repeat="user in vm.usersData">
+            <td>{{user.name}}</td>
+            <td>{{user.job}}</td>
+            <td>{{user.location}}</td>
+        </tr>
+    </table>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <link href="styles/style.css" rel="stylesheet">
+</body>
+
+</html>
