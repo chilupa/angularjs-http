@@ -1,40 +1,16 @@
 {
   "users": [
     {
-      "id": 1,
       "name": "John",
       "job": "Software developer",
-      "location": "Dallas,TX"
+      "location": "Dallas, TX",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Sansa",
-      "job": "Java developer",
-      "location": "Irving,OK"
-    },
-    {
-      "id": 3,
       "name": "Steve",
-      "job": "Full stack developer",
-      "location": "Dublin,OH"
-    },
-    {
-      "id": 4,
-      "name": "Martin",
-      "job": "Software engineer",
-      "location": "Carrolton,MI"
-    },
-    {
-      "name": "Stark",
-      "job": "Front end developer",
-      "location": "Arkansas",
-      "id": 5
-    },
-    {
-      "name": "Stacy",
-      "job": "Attender",
-      "location": "China",
-      "id": 6
+      "job": "UI/UX Designer",
+      "location": "Houston, TX",
+      "id": 2
     }
   ]
 }
