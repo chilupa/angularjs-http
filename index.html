@@ -7,28 +7,76 @@
 
 <body ng-controller="myCtrl as vm">
 
-    <h2>$http methods - get, post</h2>
-    <p>Name: <span><input ng-model="vm.userNameInput" type="text"></span></p>
-    <p>Job: <span><input ng-model="vm.userJobInput" type="text"></span></p>
-    <p>Location: <span><input ng-model="vm.userLocationInput" type="text"></span></p>
-    <button ng-disabled="!(vm.userNameInput && vm.userJobInput && vm.userLocationInput)" type="submit" ng-click="vm.submitDetails()">Submit</button>
-    <p style="color:green;">{{vm.postMessage}}</p>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Location</th>
-        </tr>
-        <tr ng-repeat="user in vm.usersData">
-            <td>{{user.name}}</td>
-            <td>{{user.job}}</td>
-            <td>{{user.location}}</td>
-        </tr>
-    </table>
+    <br>
 
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="scripts/app.js"></script>
-    <link href="styles/style.css" rel="stylesheet">
+    <h3>Understanding of <span class="text-muted"><strong>AngularJS</strong></span> HTTP Requests - <span class="text-muted">get, post, put, and delete</span> </h3>
+    <br>
+    <form>
+        <div class="form-group">
+            <label for="userName">Name</label>
+            <input name="username" ng-model="vm.userNameInput" type="text" class="form-control form-input">
+        </div>
+        <div class="form-group">
+            <label for="job">Job</label>
+            <input name="job" ng-model="vm.userJobInput" type="text" class="form-control form-input">
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input name="location" ng-model="vm.userLocationInput" type="text" class="form-control form-input">
+        </div>
+        <button class="btn btn-primary" ng-disabled="!(vm.userNameInput && vm.userJobInput && vm.userLocationInput)"
+            type="submit" ng-click="vm.submitDetails()">Submit</button>
+        <p ng-show="vm.noteFlag" style="color:green;">{{vm.postMessage}}</p>
+        <p ng-show="vm.deleteFlag" style="color:red;">{{vm.deleteMessage}}</p>
+        <hr>
+        <h3>List of Users</h3>
+        <br>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Location</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-click="vm.selectedUser(user)" ng-class="{selected: user === vm.userSelected}" ng-repeat="user in vm.usersData">
+                    <th scope="row">{{user.id}}</th>
+                    <td>{{user.name}}</td>
+                    <td>{{user.job}}</td>
+                    <td>{{user.location}}</td>
+                    <td><button class="btn btn-danger" ng-click="vm.deleteUserDetails(user.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div ng-if="vm.userSelected">
+            <h3> User details</h3>
+            <hr>
+            <div class="card text-white bg-success mb-3" style="max-width: 30rem;">
+                <div class="card-header">
+                    <input class="cardInput" type="text" ng-model="vm.userSelected.name">
+                    &nbsp;&nbsp;
+                    <span><button ng-click="vm.saveUserDetails(vm.userSelected.id)" class="btn btn-warning">Save</button></span></div>
+                <div class="card-body">
+                    <h5 class="card-title">{{vm.userSelected.job}}</h5>
+                    <p class="card-text">{{vm.userSelected.location}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="components/httpservice.fac.js"></script>
+        <link href="css/style.css" rel="stylesheet">
+        <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="node_modules/jquery/jquery.min.js"></script>
+
 </body>
 
 </html>
